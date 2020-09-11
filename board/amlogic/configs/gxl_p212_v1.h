@@ -235,10 +235,7 @@
             "get_valid_slot;"\
             "\0"\
         "upgrade_key="\
-            "if gpio input GPIOAO_2; then "\
-                "echo detect upgrade key; sleep 3;"\
-                "if gpio input GPIOAO_2; then run update; fi;"\
-            "fi;"\
+            "saradc open 0; if saradc get_in_range 0x0 0x50; then echo detect upgrade key; run update; fi;"\
             "\0"\
 
 #define CONFIG_PREBOOT  \
